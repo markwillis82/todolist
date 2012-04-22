@@ -2,7 +2,7 @@
   "author": "Mark Willis <mark.w@immat.co.uk>",
   "name": "todolist",
   "description": "take an argument list of files and scan for TODO/HACK/FIXME commands",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/markwillis82/todolist.git"
@@ -13,6 +13,11 @@
   "bin": {
     "todolist": "./bin/todolist"
   },
+  "keywords": [
+    "git",
+    "todolist",
+    "todo"
+  ],
   "dependencies": {
     "nodegrep":"*",
     "optimist":"*",

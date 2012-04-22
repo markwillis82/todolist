@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var argv = require("optimist").usage('Usage: $0 <filelist>').argv;
+
+var grepCmd = require("nodegrep/");
+var clc = require('cli-color');
+
+var error = clc.red.bold;
+var warn = clc.yellow;
+var notice = clc.blue;
+
+
+var wordsToFind = argv.w || ['TODO', 'FIXME', 'HACK'];
+
+var fileList = argv._;
+
+// run command
+grepCmd.grep(wordsToFind.join("|"), fileList, function(err, results) {
+	if(err) {
+		console.log(err);
+	}
+	if(results) {
+		results.forEach(function(lineObj) {
+			var newLine = lineObj.line;
+//			wordsToFind.forEach(function(search) {
+
+//			})
+			newLine = newLine.replace("TODO",error("TODO"));
+			console.log(warn(lineObj.file) + ":" + lineObj.lineNumber + "\t"+newLine);
+		})
+	}
+});
